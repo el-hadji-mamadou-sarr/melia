@@ -2,9 +2,11 @@ from __future__ import annotations
 from jinja2 import FileSystemLoader, Environment
 import os
 import json
+from pathlib import Path
 
-OUTPUT = "output"
-STARTER_TREE = "templates/fastapi_starter/tree.json"
+PACKAGE_DIR=Path(__file__).parent.parent
+OUTPUT = "."
+STARTER_TREE = PACKAGE_DIR/"templates/fastapi_starter/tree.json"
 STARTER_TEMPLATE="fastapi_starter"
 
 class TreeFile:
