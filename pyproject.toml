@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "melia"
+name = "melia-fastapi"
 version = "0.1.0"
 description = "fastapi project generator and servicemanager"
 authors = ["el hadji <elhadji.sarr@outlook.com>"]
