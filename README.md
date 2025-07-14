@@ -34,3 +34,19 @@ fastapi-starter/
   ├── docker-compose.yml
   ├── melia.yml                      # Melia configuration
   └── README.md
+
+## installation
+
+````bash
+pip install melia-fastapi
+````
+
+## Usage
+
+- install poetry
+
+- Create a new project with Melia:
+
+```bash
+melia new <project_name>
+```

@@ -41,7 +41,6 @@ class MeliaTemplate:
             base = tree.folder_name
         
         os.makedirs(f"{OUTPUT}/{base.replace(STARTER_TEMPLATE, project_name, 1)}", exist_ok=True)
-        print(base)
          # create the files
         for file in tree.files:
             path = f"{base}/{file.name}"
@@ -55,7 +54,7 @@ class MeliaTemplate:
         for sub in tree.sub:
             self.make_files(sub, project_name, base)
     
-    def make_starter_from_tree(self, project_name:str):
+    def make_starter_from_tree(self, project_name:str, author, email, description):
         with open(STARTER_TREE, "r") as f:
             result = f.read()
             data = json.loads(result)
