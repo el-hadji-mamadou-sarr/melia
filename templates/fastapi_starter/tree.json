@@ -5,10 +5,10 @@
                 "folder_name":"app",
                 "sub":[
                         {
-                            "name":"api",
+                            "folder_name":"api",
                             "sub":[
                                 {
-                                    "name":"endpoints",
+                                    "folder_name":"endpoints",
                                     "sub":[],
                                     "files":[
                                         {
@@ -87,7 +87,7 @@
         ],
         "files":[
             {
-                "name":".env.exemple"
+                "name":".env.example"
             },
             {
                 "name":".gitignore"
