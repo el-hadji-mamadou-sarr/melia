@@ -1,19 +1,22 @@
-[project]
+[tool.poetry]
 name = "melia"
 version = "0.1.0"
 description = "fastapi project generator and servicemanager"
-authors = [
-    {name = "el hadji",email = "elhadji.sarr@outlook.com"}
-]
+authors = ["el hadji <elhadji.sarr@outlook.com>"]
 readme = "README.md"
-requires-python = ">=3.11"
-
-dependencies = [
-    "click (>=8.2.1,<9.0.0)",
-    "jinja2 (>=3.1.6,<4.0.0)"
+packages = [
+    {include = "cli"},
+    {include = "engine"},
+    {include = "templates"}
 ]
-[project.scripts]
-melia="cli.main:cli"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.2.1"
+jinja2 = "^3.1.6"
+
+[tool.poetry.scripts]
+melia = "cli.main:cli"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
