@@ -8,6 +8,7 @@ PACKAGE_DIR=Path(__file__).parent.parent
 OUTPUT = "."
 STARTER_TREE = PACKAGE_DIR/"templates/fastapi_starter/tree.json"
 STARTER_TEMPLATE="fastapi_starter"
+TEMPLATES_DIR=PACKAGE_DIR/"templates/"
 
 class TreeFile:
     def __init__(self, name:str):
@@ -30,7 +31,7 @@ class Tree:
 class MeliaTemplate:
     
     def __init__(self):
-        self.environnement = Environment(loader=FileSystemLoader("templates/"))
+        self.environnement = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
     
     
     def make_files(self, tree:Tree, project_name: str, base=None):
