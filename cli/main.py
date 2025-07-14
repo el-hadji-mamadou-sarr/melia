@@ -1,10 +1,17 @@
-
 import click
+from engine.main import MeliaTemplate
 
-
-class CLILayer:
+@click.group()
+def cli():
+    pass
     
-    @click.command()
-    @click.option('--name', prompt='Name of the project', help='Name of the fastapi apploication')
-    def init_melia(name):
-        return click.echo(f"test init command: {name}")
+@cli.command()
+@click.option('--name', prompt='Name of the project', help='Name of the fastapi apploication')
+def init(name):
+    template = MeliaTemplate()
+    template.make_starter_from_tree()
+    click.echo(f"Project {name} Innitialized")
+        
+
+if __name__=='__main__':
+    cli()
