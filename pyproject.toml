@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "melia-fastapi"
-version = "0.2.0"
+version = "0.3.0"
 description = "fastapi project generator and servicemanager"
 authors = ["el hadji <elhadji.sarr@outlook.com>"]
 readme = "README.md"

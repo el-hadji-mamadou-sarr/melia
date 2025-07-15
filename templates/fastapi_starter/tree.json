@@ -83,6 +83,18 @@
                         "name":"main.py"
                     }
                 ] 
+            },
+            {
+                "folder_name":"tests",
+                "sub":[],
+                "files":[
+                    {
+                        "name":"__init__.py"
+                    },
+                    {
+                        "name":"test_main.py"
+                    }
+                ]
             }
         ],
         "files":[
