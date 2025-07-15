@@ -34,7 +34,7 @@ class MeliaTemplate:
         self.environnement = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
     
     
-    def make_files(self, tree:Tree, project_name: str, base=None):
+    def make_files(self, tree:Tree, project_name: str, author : str, email : str, description : str, base=None):
         if base:
             base = f"{base}/{tree.folder_name}"
         else:
@@ -45,22 +45,22 @@ class MeliaTemplate:
         for file in tree.files:
             path = f"{base}/{file.name}"
             template = self.environnement.get_template(path)
-            rendered = template.render()
+            rendered = template.render(project_name=project_name, author=author, email=email, description=description)
             
             with open(f"{OUTPUT}/{path.replace(STARTER_TEMPLATE, project_name)}", "w") as f:
                 f.write(rendered)
         
         # create sub
         for sub in tree.sub:
-            self.make_files(sub, project_name, base)
+            self.make_files(sub, project_name, author, email, description, base)
     
-    def make_starter_from_tree(self, project_name:str, author, email, description):
+    def make_starter_from_tree(self, project_name:str, author: str, email: str, description: str):
         with open(STARTER_TREE, "r") as f:
             result = f.read()
             data = json.loads(result)
             tree = Tree.from_dict(data)
 
-        self.make_files(tree, project_name=project_name)
+        self.make_files(tree, project_name=project_name, author=author, email=email, description=description)
         
             
         

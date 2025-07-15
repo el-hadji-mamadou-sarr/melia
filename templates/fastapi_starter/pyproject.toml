@@ -4,7 +4,11 @@ version = "0.1.0"
 description = "{{description}}"
 authors = ["{{author}} <{{email}}>"]
 readme = "README.md"
-packages = [{include = "{{project_name}}/core"}, {include = "{{project_name}}/models"}, {include = "{{project_name}}/client"}]
+packages = [
+    {include = "{{project_name}}/core"}, 
+    {include = "{{project_name}}/models"}, 
+    {include = "{{project_name}}/client"}
+    ]
 
 [tool.poetry.dependencies]
 python = ">=3.10"
