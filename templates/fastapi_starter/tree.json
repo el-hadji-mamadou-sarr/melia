@@ -40,7 +40,7 @@
                                     "name":"__init__.py"
                                 },
                                 {
-                                    "name":"config.py"
+                                    "name":"settings.py"
                                 },
                                 {
                                     "name":"database.py"
@@ -80,6 +80,9 @@
                         "name":"__init__.py"
                     },
                     {
+                        "name": "__main__.py"
+                    },
+                    {
                         "name":"main.py"
                     }
                 ] 
@@ -100,6 +103,9 @@
         "files":[
             {
                 "name":".env.example"
+            },
+            {
+                "name": ".env"
             },
             {
                 "name":".gitignore"
