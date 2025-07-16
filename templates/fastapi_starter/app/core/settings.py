@@ -1,3 +1,4 @@
+
 from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings
 
@@ -9,6 +10,10 @@ class DatabaseSettings(BaseModel):
     host: str
     port: int
     database: str
+
+class AuthSettings(BaseModel):
+    secret: str
+    algorithm: str = Field("HS256")
 
 class ApiSettings(BaseModel):
     host: str = Field(default="127.0.0.1")
@@ -26,9 +31,10 @@ class ApiSettings(BaseModel):
         return v or f"http{'s' if values['secured'] else ''}://{values['host']}:{values['port']}"
 
 class Settings(BaseSettings):
-    app_name: str = "{{project_name}}"
+    app_name: str = "whale-backend"
     api: ApiSettings = Field(default_factory=ApiSettings)
     db: DatabaseSettings
+    auth: AuthSettings
     page_size: int = 20
     max_page_size: int = 20
 
