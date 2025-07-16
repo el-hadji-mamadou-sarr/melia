@@ -1,6 +1,6 @@
 import jwt
 from jwt.exceptions import InvalidTokenError
-from typing import Annotated
+from typing import Annotated, Optional
 from passlib.context import CryptContext
 from fastapi import Depends, Request, HTTPException, status
 from sqlalchemy.orm import Session
@@ -20,10 +20,10 @@ credentials_exceptions = HTTPException(
 def verify_token(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
-def has_password(plain_password):
+def hash_password(plain_password):
     return pwd_context.hash(plain_password)
 
-def get_user(db: Session, email: str) -> User:
+def get_user(db: Session, email: str) -> Optional[User]:
     return db.query(User).filter(User.email == email).first()
 
 def authenticate_user(db: Session, email, password) -> User | bool:
@@ -34,7 +34,7 @@ def authenticate_user(db: Session, email, password) -> User | bool:
         return False
     return user
 
-def create_acess_token(data: dict, expires_delta: timedelta | None = None):
+def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
@@ -42,7 +42,7 @@ def create_acess_token(data: dict, expires_delta: timedelta | None = None):
         expire = datetime.now(timezone.utc) + timedelta(days=1)
 
     to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, auth_settings.secret, algorithm=auth_settings.algorith)
+    encoded_jwt = jwt.encode(to_encode, auth_settings.secret, algorithm=auth_settings.algorithm)
     return encoded_jwt
 
 async def get_token_from_cookie(request: Request):
@@ -66,7 +66,3 @@ async def get_current_user(
     if not user:
         raise credentials_exceptions
     return user
-
-
-
-

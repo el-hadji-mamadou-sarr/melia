@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.settings import Settings
 from app.core.database import Base, engine
 from app.models import whale, user
+from app.api.endpoints.auth import router as auth_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -27,7 +28,7 @@ def create_app(settings: Settings) -> FastAPI:
         root_path=settings.api.root_path,
         lifespan=lifespan,
     )
-    #app.include_router(monitoring_router)
+    app.include_router(auth_router)
     app.add_middleware(
         CORSMiddleware,
         allow_origin_regex=settings.api.cors_origin,

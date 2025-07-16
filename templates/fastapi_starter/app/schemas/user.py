@@ -13,6 +13,7 @@ class UserSchema(BaseModel):
 class UserRegisterSchema(BaseModel):
     nom: str
     email: str
+    password: str
     phone: Optional[str] = None
     is_owner: bool
     is_passenger: bool

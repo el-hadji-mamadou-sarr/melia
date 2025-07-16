@@ -1,16 +1,19 @@
+from datetime import datetime
+from pydantic import EmailStr
 from sqlalchemy import Column, Integer, String, DateTime, Boolean
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 from sqlalchemy.sql import func
 from app.core.database import Base
+from typing import List, Optional
 
 class User(Base):
     __tablename__="users"
 
-    id = Column(Integer, primary_key=True, index=True)
-    nom = Column(String(100), nullable=False)
-    email = Column(String(100), nullable=False, unique=True, index=True)
-    phone = Column(String(20), nullable=True)
-    avatar = Column(String(200), nullable=True)
-    password = Column(String(200),nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    id: Mapped[int] =  mapped_column(Integer, primary_key=True, index=True)
+    nom: Mapped[str] = mapped_column(String(100), nullable=False)
+    email: Mapped[EmailStr] = mapped_column(String(100), nullable=False, unique=True, index=True)
+    phone: Mapped[Optional[str]] = mapped_column(String(20), nullable=True)
+    avatar: Mapped[Optional[str]] = mapped_column(String(200), nullable=True)
+    password: Mapped[str] = mapped_column(String(200),nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())

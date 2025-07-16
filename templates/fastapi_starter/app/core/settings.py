@@ -31,7 +31,7 @@ class ApiSettings(BaseModel):
         return v or f"http{'s' if values['secured'] else ''}://{values['host']}:{values['port']}"
 
 class Settings(BaseSettings):
-    app_name: str = "whale-backend"
+    app_name: str = "{{project_name}}"
     api: ApiSettings = Field(default_factory=ApiSettings)
     db: DatabaseSettings
     auth: AuthSettings
