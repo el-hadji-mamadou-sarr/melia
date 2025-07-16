@@ -35,6 +35,8 @@ pytest = "^8.4.1"
 pytest-mock = "^3.14.1"
 pytest-asyncio = "^1.0.0"
 pre-commit = "^4.2.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+pyjwt = "^2.10.1"
 
 [tool.poetry.group.api]
 optional = false
