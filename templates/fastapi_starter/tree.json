@@ -21,6 +21,15 @@
                                             "name":"users.py"
                                         }
                                     ]
+                                },
+                                {
+                                    "folder_name": "services",
+                                    "sub": [],
+                                    "files": [
+                                        {
+                                            "name": "__init__.py"
+                                        }
+                                    ]
                                 }
                             ],
                             "files":[
